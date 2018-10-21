@@ -10,37 +10,27 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    
+<!-- Custom CSS -->
+<link href="{{ asset('css/backend_css/dashboard.css') }}" rel="stylesheet">
+
+<!-- Bootstrap -->
+<link href="{{ asset('css/backend_css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
+<!-- FontAwesome -->
+<link href="{{ asset('css/backend_css/FontAwesome/all.min.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+    <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Konchef</a>
+    
+     
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+               <form class="form-inline my-2 my-lg-0">
+               
+                   
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
@@ -62,17 +52,15 @@
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
-                                    </li>
-                                </ul>
-                            </li>
+                              
                         @endif
-                    </ul>
+                
                 </div>
-            </div>
-        </nav>
+     
+                </nav>
 
         @yield('content')
-    </div>
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
