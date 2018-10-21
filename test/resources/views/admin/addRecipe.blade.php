@@ -24,7 +24,7 @@
         {{ session('message') }}
     </div>
 @endif
-   <form method="POST" action="{{ route('admin.user.add') }}" class="">
+   <form method="POST" action="{{ route('admin.add.Recipe') }}" class="">
 
     {{ csrf_field() }}
    <div>
@@ -34,12 +34,12 @@
    <label>Required Items</label><textarea class="form-control" name="Items" ></textarea>
    </div>
     <div>
-    <label>Details</label> <Textarea class="form-control" name="Details" ></Textarea>
+    <label>Details</label> <Textarea class="form-control" name="Description" ></Textarea>
     </div>
   
 
     <button type="submit" class="btn btn-success">Save</button>
-    <a href="{{ route('admin.users') }}" class="btn btn-secondary">Cancel</a>
+    <a href="{{ route('admin.recipes') }}" class="btn btn-secondary">Cancel</a>
     </form>
    
 

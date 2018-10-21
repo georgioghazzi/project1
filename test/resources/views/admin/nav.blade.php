@@ -6,7 +6,7 @@
 <link href="{{ asset('css/backend_css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
 <!-- FontAwesome -->
 <link href="{{ asset('css/backend_css/FontAwesome/all.min.css') }}" rel="stylesheet">
-
+<title>Konchef - Admin Panel</title>
 
 
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">

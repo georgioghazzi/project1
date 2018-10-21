@@ -19,25 +19,21 @@
 
    <div class="row">
    <div class="col-md-12">
-   @if (session()->has('message'))
-    <div class="alert alert-info">
-        {{ session('message') }}
-    </div>
-@endif
+
    <form method="POST" action="{{ route('admin.user.add') }}" class="">
 
     {{ csrf_field() }}
    <div>
-   <label>Name</label>  <input class="form-control" name="name" type="text">
+   <label>Name</label>  <input class="form-control" name="name" type="text" required>
    </div>
    <div>
-   <label>Email</label><input class="form-control" name="email"  type="email">
+   <label>Email</label><input class="form-control" name="email"  type="email" required>
    </div>
     <div>
-    <label>Password</label> <input class="form-control" name="password" type="password">
+    <label>Password</label> <input class="form-control" name="password" type="password" required>
     </div>
   <div>
-    <label>Confirm Password</label> <input class="form-control" name="confirm_password"  type="password">
+    <label>Confirm Password</label> <input class="form-control" name="confirm_password"  type="password" required> 
   </div>
     <div>
     <label>Role:</label><select name="role"  class="form-control">

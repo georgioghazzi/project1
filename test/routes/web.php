@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('front/welcome');
+    return view('front/home');
 });
 
 
@@ -25,11 +25,11 @@ Route::prefix('admin')->group(function(){
     Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
-    Route::get('/recipes','AdminController@recipes')->name('admin.recipes');
-    Route::get('/packaging','AdminController@orders')->name('admin.orders');
+    Route::get('/recipes','AdminController@Recipes')->name('admin.recipes');
+    Route::get('/orders','AdminController@orders')->name('admin.orders');
     Route::get('/users','AdminController@users')->name('admin.users');
     Route::get('/adduser','AdminController@addUser')->name('admin.adduser');
     Route::post('/adduser','AdminController@postaddUser')->name('admin.user.add');
     Route::get('/addrecipe','AdminController@AddRecipe')->name('admin.addRecipe');
-    
+    Route::post('/addrecipe','AdminController@postAddRecipe')->name('admin.add.Recipe');
 });

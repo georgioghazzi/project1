@@ -18,7 +18,11 @@
 		
         
     <div class="col-md-12">
-    
+    @if (session()->has('message'))
+    <div class="alert alert-info">
+        {{ session('message') }}
+    </div>
+@endif
     <div class="table-responsive">
 
             
@@ -26,24 +30,25 @@
                
                <thead>
                
-               <th><input type="checkbox" id="checkall" /></th>
+
                <th>Recipe Name</th>
+               <th>Items</th>
                 <th>Details</th>
-                  <th>Edit</th>
-                  <th>View</th>
-                   <th>Delete</th>
+                <th>View</th>
+                 <th>Edit</th>
+                  <th>Delete</th>
                </thead>
 <tbody>
-
+@foreach ($recipes as $row)
 <tr>
-<td><input type="checkbox" class="checkthis" /></td>
-<td>Chich Barak</td>
-<td> is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</td>
-<td><p data-placement="top" data-toggle="tooltip" title="View"><button class="btn btn-success btn-xs" data-title="View" data-toggle="modal" data-target="#view" ><span class="fas fa-eye fa-xs"></span></button></p></td>
+<td>{{ $row['name'] }}</td>
+<td>{{ $row['items'] }}</td>
+<td>{{ $row['description'] }}</td>
+<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-success btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="far fa-eye fa-xs"></span></button></p></td>
 <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="far fa-edit fa-xs"></span></button></p></td>
 <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="far fa-trash-alt fa-xs"></span></button></p></td>
 </tr>
-
+@endforeach
 <tr>
 
 </tbody>

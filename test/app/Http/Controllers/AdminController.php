@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use app\Admin;
+use App\Recipes;
+use App\Admin;
 
 
 class AdminController extends Controller
@@ -28,13 +29,16 @@ class AdminController extends Controller
     {
         return view('/admin/AdminPanel');
     }
-    public function recipes()
-    {
-        return view('/admin/Recipes');
-    }
-    public function orders()
+    public function Orders()
     {
         return view('/admin/orders');
+    }
+
+    public function recipes()
+    {
+
+        $recipes = recipes::all()->toArray();
+        return view('/admin/recipes',compact('recipes'));
     }
     public function users()
     {
@@ -63,7 +67,7 @@ class AdminController extends Controller
             $admin->password=Hash::make($request->password);
             $admin->save();
             session()->flash('message', 'User Added.');
-            return redirect()->route('admin.user.add');
+            return redirect()->route('admin.users');
             
         }
         if ($request->role == "PACKAGING_Staff")
@@ -77,4 +81,17 @@ class AdminController extends Controller
     {
         return view('/admin/addRecipe');
     }
+    public function postaddRecipe(Request $request)
+    {
+        $recipes = new recipes;
+
+        $recipes->name=$request->RecipeName;
+        $recipes->items=$request->Items;
+        $recipes->description=$request->Description;
+        $recipes->save();
+        session()->flash('message', 'Recipe Added.');
+        return redirect()->route('admin.recipes');
+    }
+
+  
 }
