@@ -39,6 +39,9 @@
     <div>
     <Label>Price</Label><input class="form-control" name="Price" type="number">
     </div>
+    <div>
+    <Label>Image URL:</Label><input class="form-control" name="imagePath" type="text">
+    </div>
 
     <button type="submit" class="btn btn-success">Save</button>
     <a href="{{ route('admin.recipes') }}" class="btn btn-secondary">Cancel</a>
