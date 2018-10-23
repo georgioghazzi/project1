@@ -88,6 +88,8 @@ class AdminController extends Controller
         $recipes->name=$request->RecipeName;
         $recipes->items=$request->Items;
         $recipes->description=$request->Description;
+        $recipes->price = $request->$Price;
+        $recipes->imagePath=$request->$imagePath;
         $recipes->save();
         session()->flash('message', 'Recipe Added.');
         return redirect()->route('admin.recipes');

@@ -1,3 +1,29 @@
 .thumbnail img {
     max-height:150px;
 }
+
+.thumbnail .description{
+    color:#7F7F7F;
+   
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    width:260px;
+    line-height: 24px;     /* fallback */
+    max-height: 100px;      /* fallback */
+    -webkit-line-clamp: 4; /* number of lines to show */
+    -webkit-box-orient: vertical;
+
+   
+
+}
+
+.thumbnail h3{
+    font-weight: bold;
+
+}
+.price{
+    font-weight: bold;
+    font-size:16px;
+}

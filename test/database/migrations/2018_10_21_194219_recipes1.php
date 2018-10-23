@@ -15,9 +15,11 @@ class Recipes1 extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->text('items')->unique();
+            $table->string('name')->unique();;
+            $table->text('items');
             $table->text('description');
+            $table->String('imagePath');
+            $table->integer('Price');
             $table->timestamps();
         });
     }
