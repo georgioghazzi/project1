@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Recipes;
 use Session;
 use App\Cart;
-
+use App\Orders;
 
 class HomeController extends Controller
 {
@@ -75,13 +75,19 @@ class HomeController extends Controller
         $total = $cart->totalPrice;
         return view('front.GuestCheckout',['total'=>$total]);
     }
-    public function postCheckout()
+    public function postCheckout(Request $request)
     {
         if (!Session::has('cart')) {
             return redirect()->route('shop.shoppingCart');
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
+        $order= new Orders();
+        $order->cart = serialize($cart);
+        $order->address = $request->address;
+        $order->email = $request->email;
+        $order->name = $request->name;
+        $order->save();
         Session::forget('cart');
         return redirect()->route('home')->with('success', 'Successfully purchased products!');
     }

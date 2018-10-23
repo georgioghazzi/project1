@@ -14,13 +14,13 @@
                     <div class="col-xs-12">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control" disabled>
+                            <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control" readonly>
                         </div>
                     </div>
                     <div class="col-xs-12">
                         <div class="form-group">
                             <label for="name">Email</label>
-                            <input type="email" name="email" value="{{ Auth::user()->email }}" class="form-control" disabled>
+                            <input type="email" name="email" value="{{ Auth::user()->email }}" class="form-control" readonly>
                         </div>
                     </div>
                     <div class="col-xs-12">
