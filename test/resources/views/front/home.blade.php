@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-@foreach ($recipes as $row)
     @if(Session::has('success'))
         <div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
@@ -13,6 +11,8 @@
             </div>
         </div>
     @endif
+@foreach ($recipes as $row)
+
 <div class="row">
 <div class=container>
         <div class="col-sm-6 col-md-4">

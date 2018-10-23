@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Recipes;
 use App\Admin;
-
+use App\Orders;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -31,7 +32,12 @@ class AdminController extends Controller
     }
     public function Orders()
     {
-        return view('/admin/orders');
+        $orders = orders::all();
+        $orders->transform(function($order,$key){
+            $order->cart = unserialize($order->cart);
+            return $order;
+        });
+        return view('/admin/orders',['orders' => $orders]);
     }
 
     public function recipes()
@@ -43,8 +49,8 @@ class AdminController extends Controller
     public function users()
     {
 
-   
-        return view('/admin/users');
+        $user = user::all()->toArray();
+        return view('/admin/users',compact('user'));
     }
     public function addUser()
     {
