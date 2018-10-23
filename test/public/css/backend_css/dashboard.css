@@ -60,6 +60,20 @@ body {
  * Navbar
  */
 
+
+ .smore {
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  width:260px;
+  line-height: 24px;     /* fallback */
+  max-height: 100px;      /* fallback */
+  -webkit-line-clamp: 4; /* number of lines to show */
+  -webkit-box-orient: vertical;
+
+ }
+
 .navbar-brand {
   padding-top: .75rem;
   padding-bottom: .75rem;

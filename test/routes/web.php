@@ -13,10 +13,12 @@
 
 Route::get('/','HomeController@index', function () {
     return view('front/home');
-});
-
-
-
+})->name('home');
+Route::get('/add-to-cart/{id}','HomeController@getAddtoCart')->name('add.to.cart');
+Route::get('/shopping-cart','HomeController@getCart')->name('shoping.cart');
+Route::get('/checkout','HomeController@checkout')->name('checkout')->middleware('auth');
+Route::get('/guest_checkout','HomeController@guestCheckout')->name('guestCheckout');
+Route::post('/checkout','HomeController@postCheckout')->name('postCheckout');
 
 Auth::routes();
 
