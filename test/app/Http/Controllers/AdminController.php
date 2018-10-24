@@ -49,7 +49,7 @@ class AdminController extends Controller
     public function users()
     {
 
-        $user = user::all()->toArray();
+        $user = admin::all()->toArray();
         return view('/admin/users',compact('user'));
     }
     public function addUser()
@@ -63,7 +63,14 @@ class AdminController extends Controller
 
         if ($request->role == "Chef")
         {
-            
+            $admin = new Admin;
+            $admin->name=$request->name;
+            $admin->email=$request->email;
+            $admin->password=Hash::make($request->password);
+            $admin->user_type="chef";
+            $admin->save();
+            session()->flash('message', 'User Added.');
+            return redirect()->route('admin.users');
         }
         if ($request->role == "Admin")
         {
@@ -71,6 +78,7 @@ class AdminController extends Controller
             $admin->name=$request->name;
             $admin->email=$request->email;
             $admin->password=Hash::make($request->password);
+            $admin->user_type="admin";
             $admin->save();
             session()->flash('message', 'User Added.');
             return redirect()->route('admin.users');
@@ -78,7 +86,14 @@ class AdminController extends Controller
         }
         if ($request->role == "PACKAGING_Staff")
         {
-
+            $admin = new Admin;
+            $admin->name=$request->name;
+            $admin->email=$request->email;
+            $admin->password=Hash::make($request->password);
+            $admin->user_type="staff";
+            $admin->save();
+            session()->flash('message', 'User Added.');
+            return redirect()->route('admin.users');
         }
 
     }
