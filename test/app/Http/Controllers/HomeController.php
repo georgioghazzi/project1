@@ -87,6 +87,7 @@ class HomeController extends Controller
         $order->address = $request->address;
         $order->email = $request->email;
         $order->name = $request->name;
+        $order->time = $request->time;
         $order->save();
         Session::forget('cart');
         return redirect()->route('home')->with('success', 'Successfully purchased products!');

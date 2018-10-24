@@ -30,7 +30,22 @@
                         </div>
                     </div>
                     <hr>
-                   
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                    <select name="time" class="form-control">
+                   <option value="12am">12 am</option>
+                   <option value="1pm">1 pm</option>
+                   <option value="2pm"> 2 pm</option>
+                   <option value="3pm">3 pm</option>
+                   <option value="4pm">4 pm</option>
+                   <option value="5pm">5 pm</option>
+                   <option value="6pm">6 pm</option>
+                   <option value="7pm">7 pm</option>
+                   <option value="8pm">8 pm</option>
+                   </select>
+                        </div>
+                        
+                    </div>
                    
                 </div>
                 {{ csrf_field() }}

@@ -33,6 +33,7 @@
              <th>Customer Name</th>
              <th>Items Bought</th>
              <th>Address</th>
+             <th>Delivery Time</th>
              <th>Total</th>
              <th>View</th>
               <th>Edit</th>
@@ -52,6 +53,7 @@
 @endforeach
 </td>
 <td>{{ $row['address'] }}</td>
+<td>{{ $row['time'] }}</td>
 <td>{{ $row->cart->totalPrice }}$</td>
 
 <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-success btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="far fa-eye fa-xs"></span></button></p></td>
