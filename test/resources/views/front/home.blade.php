@@ -11,6 +11,8 @@
             </div>
         </div>
     @endif
+
+    
 @foreach ($recipes as $row)
 
 <div class="row">
