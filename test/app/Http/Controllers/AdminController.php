@@ -9,6 +9,7 @@ use App\Admin;
 use App\Orders;
 use App\User;
 
+
 class AdminController extends Controller
 {
     /**
@@ -16,6 +17,7 @@ class AdminController extends Controller
      *
      * @return void
      */
+    
     public function __construct()
     {
         $this->middleware('auth:admin');
@@ -32,6 +34,9 @@ class AdminController extends Controller
     }
     public function Orders()
     {
+      
+
+
         $orders = orders::all();
         $orders->transform(function($order,$key){
             $order->cart = unserialize($order->cart);
@@ -49,7 +54,7 @@ class AdminController extends Controller
     public function users()
     {
 
-        $user = user::all()->toArray();
+        $user = admin::all()->toArray();
         return view('/admin/users',compact('user'));
     }
     public function addUser()
@@ -63,7 +68,14 @@ class AdminController extends Controller
 
         if ($request->role == "Chef")
         {
-            
+            $admin = new Admin;
+            $admin->name=$request->name;
+            $admin->email=$request->email;
+            $admin->password=Hash::make($request->password);
+            $admin->user_type="chef";
+            $admin->save();
+            session()->flash('message', 'User Added.');
+            return redirect()->route('admin.users');
         }
         if ($request->role == "Admin")
         {
@@ -71,6 +83,7 @@ class AdminController extends Controller
             $admin->name=$request->name;
             $admin->email=$request->email;
             $admin->password=Hash::make($request->password);
+            $admin->user_type="admin";
             $admin->save();
             session()->flash('message', 'User Added.');
             return redirect()->route('admin.users');
@@ -78,8 +91,20 @@ class AdminController extends Controller
         }
         if ($request->role == "PACKAGING_Staff")
         {
-
+            $admin = new Admin;
+            $admin->name=$request->name;
+            $admin->email=$request->email;
+            $admin->password=Hash::make($request->password);
+            $admin->user_type="staff";
+            $admin->save();
+            session()->flash('message', 'User Added.');
+            return redirect()->route('admin.users');
         }
+
+    }
+    public function forbiden()
+    {
+       return view('/admin/forbiden');
 
     }
 

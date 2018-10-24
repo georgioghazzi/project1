@@ -47,24 +47,30 @@
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
               </li>
+              @if(Auth::user()->user_type == "staff" || Auth::user()->user_type == "admin")
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.recipes') }}">
                   <span data-feather="file"></span>
                   Recipes
                 </a>
               </li>
+              @endif
+              @if(Auth::user()->user_type == "chef" || Auth::user()->user_type == "admin")
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.orders') }}">
                   <span data-feather="shopping-cart"></span>
                   Orders
                 </a>
               </li>
+              @endif
+              @if(Auth::user()->user_type == "admin")
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.users') }}">
                   <span data-feather="users"></span>
                   Users
                 </a>
-              </li>           
+              </li>    
+              @endif       
                    </nav>
 
                          @yield('content')
