@@ -62,7 +62,19 @@ body {
  * Navbar
  */
 
-
+.wb{
+  margin-top:5px;
+  color:white;
+}
+.logout{
+  color:#a2b223;
+  font-size:20px;
+}
+.logout:hover{
+  color:#a2b223;
+  text-decoration: none;
+  
+}
  .smore {
 
   overflow: hidden;

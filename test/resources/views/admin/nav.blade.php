@@ -10,17 +10,13 @@
 
 
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Admin Panel</a>
-      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ route('admin.dashboard') }}">Admin Panel</a>
+      <h3 class="wb">Welcome Back {{ Auth::user()->name }} </h3>
       <ul class="navbar-nav px-3">
       <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
+                                    
+                                        <a class="logout" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
@@ -47,7 +43,7 @@
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
               </li>
-              @if(Auth::user()->user_type == "staff" || Auth::user()->user_type == "admin")
+              @if(Auth::user()->user_type == "chef" || Auth::user()->user_type == "admin")
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.recipes') }}">
                   <span data-feather="file"></span>
@@ -55,7 +51,7 @@
                 </a>
               </li>
               @endif
-              @if(Auth::user()->user_type == "chef" || Auth::user()->user_type == "admin")
+              @if(Auth::user()->user_type == "staff" || Auth::user()->user_type == "admin")
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.orders') }}">
                   <span data-feather="shopping-cart"></span>
@@ -80,6 +76,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js')  }}"></script>
 
     <!-- Icons -->

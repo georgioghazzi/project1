@@ -36,3 +36,5 @@ Route::prefix('admin')->group(function(){
     Route::post('/addrecipe','AdminController@postAddRecipe')->name('admin.add.Recipe')->middleware('role:chef,admin');
     Route::get('/forbiden','AdminController@forbiden')->name('admin.forbiden');
 });
+
+

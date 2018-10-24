@@ -66,6 +66,9 @@ class AdminController extends Controller
     public function postaddUser(Request $request)
     {
 
+
+ 
+
         if ($request->role == "Chef")
         {
             $admin = new Admin;

@@ -19,7 +19,7 @@ class Recipes1 extends Migration
             $table->text('items');
             $table->text('description');
             $table->String('imagePath');
-            $table->integer('Price');
+            $table->decimal('Price',10,2);
             $table->timestamps();
         });
     }

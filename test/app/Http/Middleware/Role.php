@@ -13,13 +13,14 @@ class Role
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next,$roles)
+    public function handle($request, Closure $next, ...$roles)
     {
-
+            
         if(auth::user()->user_type === "")
         {
             return redirect()->route('admin.forbiden');
         }
+        
         
         if(is_Array($roles))
         {
@@ -36,6 +37,6 @@ class Role
        {
         return $next($request);
        }
-       else  return redirect()->route('admin.forbiden');
+       return redirect()->route('admin.forbiden');
     }
 }

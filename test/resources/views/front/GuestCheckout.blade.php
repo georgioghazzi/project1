@@ -32,6 +32,7 @@
                     <hr>
                     <div class="col-xs-12">
                         <div class="form-group">
+                        <label for="DeliveryTime">Delivery Time</label>
                     <select name="time" class="form-control">
                    <option value="12am">12 am</option>
                    <option value="1pm">1 pm</option>

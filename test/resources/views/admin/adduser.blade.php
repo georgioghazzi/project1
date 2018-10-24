@@ -30,10 +30,10 @@
    <label>Email</label><input class="form-control" name="email"  type="email" required>
    </div>
     <div>
-    <label>Password</label> <input class="form-control" name="password" type="password" required>
+    <label>Password</label> <input class="form-control" id="password" name="password" type="password" required>
     </div>
   <div>
-    <label>Confirm Password</label> <input class="form-control" name="confirm_password"  type="password" required> 
+    <label>Confirm Password</label> <input class="form-control" id="password_confirmation" name="password_confirmation"  type="password" required> 
   </div>
     <div>
     <label>Role:</label><select name="role"  class="form-control">
