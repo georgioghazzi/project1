@@ -1,7 +1,14 @@
 .thumbnail img {
     max-height:150px;
 }
+.login{
+    margin-top:13%;
+    
+}
 
+body{
+    background-color: lightblue;
+}
 .thumbnail .description{
     color:#7F7F7F;
    
