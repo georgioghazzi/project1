@@ -1,0 +1,12 @@
+
+.login-form {
+    width: 500px;
+    margin: 100px auto;
+    padding:40px 90px;
+    border:1px solid #000;
+    background-color:#fff;
+    border-color:#d3e0e9;
+}
+:host(body){
+    background-color:red;
+}
