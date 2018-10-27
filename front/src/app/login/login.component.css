@@ -1,7 +1,7 @@
 
 .login-form {
     width: 500px;
-    margin: 100px auto;
+    margin: 50px auto;
     padding:40px 90px;
     border:1px solid #000;
     background-color:#fff;
@@ -9,4 +9,13 @@
 }
 :host(body){
     background-color:red;
+}
+.login{
+    height: 100%;
+    background-color:red;
+}
+.logoimg{
+    width:60%;
+    margin-left:20%;
+    padding-bottom:30px;
 }
