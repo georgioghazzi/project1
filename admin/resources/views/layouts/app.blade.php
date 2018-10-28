@@ -17,7 +17,7 @@
 </head>
 <body>
     <div id="app">
-    { !! csrf_field() !!}
+    {{ csrf_field() }}
 
         @yield('content')
     </div>
