@@ -18,7 +18,8 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-    ];
+        \App\Http\Middleware\CORS::class,
+        ];
 
     /**
      * The application's route middleware groups.
@@ -57,5 +58,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'role' => \App\http\Middleware\Role::class,
+        'CORS'  =>  \App\Http\Middleware\CORS::class,
     ];
 }

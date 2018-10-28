@@ -5,6 +5,9 @@
         <img src="../assets/logo.jpg" class="logoimg">
 
       </div>
+      <div class="alert alert-danger" [hidden]="!error">
+        {{error}}
+      </div>
         <div class="form-group">
           <label >Email address</label>
           <input type="email" class="form-control" name="email" id="email"  placeholder="Enter email" [(ngModel)]="form.email" required> 
