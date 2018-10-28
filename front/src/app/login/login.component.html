@@ -1,23 +1,23 @@
 <router-outlet>
 
-    <form class="login-form">
+    <form #loginForm=ngForm (ngSubmit)="onSubmit()"  class="login-form">
       <div class="logo">
         <img src="../assets/logo.jpg" class="logoimg">
 
       </div>
         <div class="form-group">
           <label >Email address</label>
-          <input type="email" class="form-control" id="email"  placeholder="Enter email">
+          <input type="email" class="form-control" name="email" id="email"  placeholder="Enter email" [(ngModel)]="form.email" required> 
           
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="pass" placeholder="Password">
+          <input type="password" class="form-control" name="password" id="pass" placeholder="Password" [(ngModel)]="form.password" required> 
         </div>
 
         
 <br>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
         <div class="form-group">
           
             <small><a href="#">Forgot Your Password?</a></small>
