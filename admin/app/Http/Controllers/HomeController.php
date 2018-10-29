@@ -28,8 +28,8 @@ class HomeController extends Controller
     public function index()
     {
 
-        $recipes = recipes::all()->toArray();
-        return view('/front/home',compact('recipes'));
+        $recipes = recipes::all();
+        return $recipes;
     }
     public function getAddtoCart(Request $request , $id)
     {

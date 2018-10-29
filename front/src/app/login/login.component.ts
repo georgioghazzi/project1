@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   constructor(private Jarvis: JarvisService,
               private Token: TokenService,
               private router: Router,
-              private Auth : AuthService) { }
+              private Auth: AuthService) { }
 
   onSubmit() {
     this.Jarvis.login(this.form).subscribe(
