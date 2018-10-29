@@ -11,7 +11,7 @@
     </ul>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="/cart"><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
+            <a class="nav-link" href="/cart"><span class="mt-2"> {{recipesService.navbarCartCount}} </span><i class="fas fa-shopping-cart"></i> Shopping Cart</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/profile" *ngIf ="loggedIn"><i class="fas fa-user"></i> Profile</a>

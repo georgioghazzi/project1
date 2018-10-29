@@ -31,6 +31,11 @@ class HomeController extends Controller
         $recipes = recipes::all();
         return $recipes;
     }
+    public function searchByID($id)
+    {
+        $recipes = recipes::find($id);
+        return $recipes;
+    }
     public function getAddtoCart(Request $request , $id)
     {
         $recipes = recipes::find($id);

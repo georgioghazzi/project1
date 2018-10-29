@@ -1,0 +1,60 @@
+.img-wrap{
+    max-width: 350px;
+    max-height: 200px;
+}
+.container{
+    margin-top:50px;
+}
+.media-body{
+    margin:0 40px;
+    
+}
+.title{
+    font-color:#000;
+    font-size:35px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.short{
+    color:#7F7F7F;
+   
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+
+ 
+ 
+    max-height: 50px;      /* fallback */
+    -webkit-line-clamp: 4; /* number of lines to show */
+    -webkit-box-orient: vertical;
+
+   
+}
+.trow{
+    max-height: 20%;
+}
+.total{
+    float:right;
+    font-size:35px;
+    margin-top:5px;
+}
+.totalLabel{
+    color:#5f5f5f;
+    font-weight: bold;
+    margin-right:30px;
+}
+.totalvalue{
+    display: inline-block;
+    color:#000;
+}
+.checkout{
+    margin-left:10px;
+    margin-top:5px;
+}
+.checkout a{
+    margin-right:10px;
+}
+.table td{
+    vertical-align: middle !important;
+}

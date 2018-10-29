@@ -18,7 +18,7 @@ class Recipes1 extends Migration
             $table->string('name')->unique();;
             $table->text('items');
             $table->text('description');
-            $table->String('imagePath');
+            $table->text('imagePath');
             $table->decimal('Price',10,2);
             $table->timestamps();
         });

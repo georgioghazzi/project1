@@ -19,11 +19,11 @@
                     {{recipe.description}}</p>
                 <div class="row">
                     <div class="col-xs-12 col-md-6">
-                        <p class="lead">
+                        <p class="price">
                             ${{recipe.Price}}</p>
                     </div>
                     <div class="col-xs-12 col-md-6">
-                        <a class="btn btn-success" href="#">Add to cart</a>
+                        <a class="btn btn-success" (click)="AddToCart(recipe)" href="#">Add to cart</a>
                     </div>
                 </div>
             </div>

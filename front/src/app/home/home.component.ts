@@ -1,4 +1,7 @@
-import { Observable } from 'rxjs';
+import { RecipesService } from './../Services/recipes.service';
+
+
+
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,17 +12,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  private recipes = [];
+
+  public recipes = [];
   private apiURL = 'http://localhost:8000/api/recipes';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private recipesService: RecipesService) { }
   getrecipes() {
     return this.http.get(this.apiURL).subscribe((res: any[]) => {
-      console.log(res);
       this.recipes = res;
       });
 }
   ngOnInit() {
 this.getrecipes() ;
   }
+AddToCart(recipes) {
+  event.preventDefault();
+  this.recipesService.addToCart(recipes);
 
+
+}
 }

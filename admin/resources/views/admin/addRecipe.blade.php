@@ -37,7 +37,7 @@
     <label>Details</label> <Textarea class="form-control" name="Description" ></Textarea>
     </div>
     <div>
-    <Label>Price</Label><input class="form-control" name="Price" type="number">
+    <Label>Price</Label><input class="form-control" name="Price" type="number" step="0.01">
     </div>
     <div>
     <Label>Image URL:</Label><input class="form-control" name="imagePath" type="text">

@@ -15,6 +15,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { JarvisService } from './Services/jarvis.service';
 import { TokenService } from './Services/token.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,12 +26,13 @@ import { TokenService } from './Services/token.service';
     ProfileComponent,
     NavbarComponent,
 
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
 
 
   ],

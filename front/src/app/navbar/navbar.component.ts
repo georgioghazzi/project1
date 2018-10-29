@@ -1,3 +1,4 @@
+import { RecipesService } from './../Services/recipes.service';
 import { AuthService } from './../Services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -17,7 +18,8 @@ public loggedIn: boolean;
   constructor(
     private Auth: AuthService,
     private router: Router,
-    private token: TokenService
+    private token: TokenService,
+    private  recipesService: RecipesService
   ) { }
 
   ngOnInit() {
