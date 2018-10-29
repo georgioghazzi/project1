@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { TokenService } from './../Services/token.service';
 import { JarvisService } from './../Services/jarvis.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -21,13 +23,20 @@ public form = {
 
 public error: {} ;
 
-  constructor(private Jarvis: JarvisService) { }
+  constructor(private Jarvis: JarvisService,
+    private Token: TokenService,
+    private router: Router) { }
 
   onSubmit() {
     this.Jarvis.register(this.form).subscribe(
-      data => console.log(data),
+      data => this.handleResponse(data),
       error => this.handleError(error)
     );
+  }
+  handleResponse(data) {
+    this.Token.handle(data.access_token);
+    this.router.navigateByUrl('/profile');
+
   }
   handleError(error) {
     this.error = error.error;
