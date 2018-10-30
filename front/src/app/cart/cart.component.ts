@@ -10,11 +10,16 @@ import { Recipes } from '../recipes';
 })
 export class CartComponent implements OnInit {
 cartRecipes: Recipes[];
+isDis = false;
   constructor(private recipeService: RecipesService) { }
 
   ngOnInit() {
     this.getCartProduct();
     this.getTotal();
+    if(this.recipeService.totalValue === 0)
+    {
+      this.isDis = true;
+    }
   }
   removeCartProduct(recipe: Recipes) {
     event.preventDefault();
@@ -31,7 +36,9 @@ cartRecipes: Recipes[];
     recipes.forEach(recipe => {
       this.recipeService.totalValue += recipe.Price * 1;
     });
-
+ 
   }
-
+  isDisabled() : boolean{
+    return this.isDis;
+  }
 }

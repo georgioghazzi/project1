@@ -32,6 +32,7 @@ public error: {} ;
       data => this.handleResponse(data),
       error => this.handleError(error)
     );
+  
   }
   handleResponse(data) {
     this.Token.handle(data.access_token);

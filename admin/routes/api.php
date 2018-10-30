@@ -13,5 +13,6 @@ Route::group([
     Route::post('me', 'AuthController@me');
     Route::get('recipes','HomeController@index');
     Route::get('recipes/{id}','HomeController@searchByID');
+    Route::post('order','HomeController@addOrder');
 
 });

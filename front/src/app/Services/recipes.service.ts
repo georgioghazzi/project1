@@ -9,7 +9,7 @@ export class RecipesService {
   navbarCartCount = this.getLocalCartRecipes().length;
   public recipes = [];
   public success = null;
-  public totalValue = null;
+  public totalValue = 0;
   private apiURL = 'http://localhost:8000/api/recipes';
   constructor(private http: HttpClient) { }
 

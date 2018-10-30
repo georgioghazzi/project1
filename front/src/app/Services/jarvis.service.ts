@@ -6,15 +6,20 @@ import { Injectable } from '@angular/core';
 })
 export class JarvisService {
 
-  private baseURL= "http://localhost:8000/api"
+  private baseURL = 'http://localhost:8000/api';
+  private orderURL = 'http://localhost:8000/api';
   constructor(private http: HttpClient) { }
 
 
-  register(data){
+  register(data) {
     return this.http.post(`${this.baseURL}/register`, data);
   }
 
-  login(data){
+  login(data) {
     return this.http.post(`${this.baseURL}/login`, data);
   }
+  order(data) {
+    return this.http.post(`${this.orderURL}/order`, data);
+  }
+
 }

@@ -62,8 +62,9 @@
    <span class="totalvalue">${{ recipeService.totalValue }}</span>
 </div>
 <div class="Checkout">
-    <a href="/checkout"  class="btn btn-primary">Checkout</a>
-    <a href="/checkout-guest" class="btn btn-success">Checkout As A Guest</a>
+          <button type="submit" [disabled]="isDisabled()" class="btn btn-primary" onclick="location.href='/checkout'">Checkout</button>
+          <button type="submit" [disabled]="isDisabled()" class="btn btn-success" onclick="location.href='/checkout-guest'">Checkout As A Guest</button>
+    
 </div>
 </div> 
 
