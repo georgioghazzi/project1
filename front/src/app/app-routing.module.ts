@@ -1,3 +1,5 @@
+import { CheckoutComponent } from './checkout/checkout/checkout.component';
+import { CheckoutGuestComponent } from './checkout/checkout-guest/checkout-guest.component';
 import { AfterLoginService } from './Services/after-login.service';
 import { BeforeLoginService } from './Services/before-login.service';
 import { ProfileComponent } from './profile/profile.component';
@@ -16,7 +18,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent , canActivate : [BeforeLoginService]},
   {path: '' , component: HomeComponent , canActivate : [BeforeLoginService]},
   {path : 'cart', component: CartComponent , canActivate : [BeforeLoginService]},
-  {path : 'profile' , component : ProfileComponent , canActivate: [AfterLoginService]}
+  {path : 'profile' , component : ProfileComponent , canActivate: [AfterLoginService]},
+  {path: 'checkout-guest', component: CheckoutGuestComponent, canActivate: [BeforeLoginService]},
+  {path: 'checkout', component: CheckoutComponent , canActivate: [AfterLoginService]}
   ];
 @NgModule({
   imports: [

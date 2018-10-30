@@ -14,6 +14,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { JarvisService } from './Services/jarvis.service';
 import { TokenService } from './Services/token.service';
+import { CheckoutComponent } from './checkout/checkout/checkout.component';
+import { CheckoutGuestComponent } from './checkout/checkout-guest/checkout-guest.component';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { TokenService } from './Services/token.service';
     CartComponent,
     ProfileComponent,
     NavbarComponent,
+    CheckoutComponent,
+    CheckoutGuestComponent,
 
 
   ],

@@ -6,9 +6,10 @@ import { Recipes } from '../recipes';
   providedIn: 'root'
 })
 export class RecipesService {
-  navbarCartCount;
-  total = 0;
+  navbarCartCount = this.getLocalCartRecipes().length;
   public recipes = [];
+  public success = null;
+  public totalValue = null;
   private apiURL = 'http://localhost:8000/api/recipes';
   constructor(private http: HttpClient) { }
 
@@ -30,15 +31,17 @@ export class RecipesService {
     a = JSON.parse(localStorage.getItem('avct_item')) || [];
     a.push(data);
     localStorage.setItem('avct_item', JSON.stringify(a));
+    this.success = 'done';
+    console.log(this.success);
     this.calculateLocalCartProdCounts();
-
-  }
+     }
   removeLocalCartProduct(recipe: Recipes) {
     const recipes: Recipes[] = JSON.parse(localStorage.getItem('avct_item'));
 
     for (let i = 0; i < recipes.length; i++) {
       if (recipes[i].id === recipe.id) {
         recipes.splice(i, 1);
+        this.totalValue -= recipe.Price * 1;
         break;
       }
     }
@@ -47,6 +50,7 @@ export class RecipesService {
 
     this.calculateLocalCartProdCounts();
   }
+
   getLocalCartRecipes(): Recipes[] {
     const products: Recipes[] =
       JSON.parse(localStorage.getItem('avct_item')) || [];
@@ -55,6 +59,7 @@ export class RecipesService {
   calculateLocalCartProdCounts() {
     this.navbarCartCount = this.getLocalCartRecipes().length;
   }
+
 }
 
 

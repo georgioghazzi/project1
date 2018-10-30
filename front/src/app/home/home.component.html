@@ -5,7 +5,9 @@
           <h1>Items</h1>
       </div>
   </div> 
-
+  <div class="alert alert-success" [hidden]="!success">
+    {{success}}
+  </div>
   <div id="products" class="row view-group">
     <div class="item col-xs-4 col-lg-4" *ngFor="let recipe of recipes">
         <div class="thumbnail card">

@@ -1,75 +1,75 @@
 <router-outlet>    
-              <div class="container">
-
-            
-                
-                
-            <div class="card" > 
-                
-            <table class="table table-hover shopping-cart-wrap">
-                
-            <thead class="text-muted">
-                
-            <tr>
-              <th scope="col">Product</th>
-              <th scope="col" width="120">Quantity</th>
-              <th scope="col" width="50">Price</th>
-              <th scope="col" width="100" class="text-right">Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="trow" *ngFor="let recipe of cartRecipes">
-                <td>
-            <figure class="media" >
-                <div class="img-wrap"><img src="{{ recipe.imagePath }}" class="img-thumbnail img-sm"></div>
-                <figcaption class="media-body">
-                    <h6 class="title text-truncate">{{ recipe.name}} </h6>
-                    <dl class="param param-inline small">
-                      <dt>Description </dt>
-                      <dd class="short">{{recipe.description}}</dd>
-                    </dl>
-                    <dl class="param param-inline small">
-                      <dt>Items </dt>
-                      <dd class="short">{{recipe.items}}</dd>
-                    </dl>
-                </figcaption>
-            </figure> 
-                </td>
-                <td >  
-                    <select class="form-control">
-                        <option>1</option>
-                        <option>2</option>	
-                        <option>3</option>	
-                        <option>4</option>	
-                    </select> 
-                </td>
-                <td > 
-                    <div class="price-wrap"> 
-                        <var class="price">${{recipe.Price}}</var> 
-         
-                    </div> <!-- price-wrap .// -->
-                </td>
-                <td class="text-right"> 
-                <a href="" (click)="removeCartProduct(recipe)" class="btn btn-outline-danger"> × Remove</a>
-                </td>
-            </tr>
-           
-            </tbody>
-            </table>
-            </div> <!-- card.// -->
-           <div class="total">
-               <span class="totalLabel">Total:</span>
-               <span class="totalvalue">{{ recipeService.total }}</span>
-           </div>
-           <div class="Checkout">
-                <a href="" class="btn btn-primary">Checkout</a>
-                <a href="" class="btn btn-success">Checkout As A Guest</a>
-            </div>
-            </div> 
+  <div class="container">
 
 
-       
-            <!--container end.//-->
-           
+    
+    
+<div class="card" > 
+    
+<table class="table table-hover shopping-cart-wrap">
+    
+<thead class="text-muted">
+    
+<tr>
+  <th scope="col">Product</th>
+  <th scope="col" width="120">Quantity</th>
+  <th scope="col" width="50">Price</th>
+  <th scope="col" width="100" class="text-right">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="trow" *ngFor="let recipe of cartRecipes">
+    <td>
+<figure class="media" >
+    <div class="img-wrap"><img src="{{ recipe.imagePath }}" class="img-thumbnail img-sm"></div>
+    <figcaption class="media-body">
+        <h6 class="title text-truncate">{{ recipe.name}} </h6>
+        <dl class="param param-inline small">
+          <dt>Description </dt>
+          <dd class="short">{{recipe.description}}</dd>
+        </dl>
+        <dl class="param param-inline small">
+          <dt>Items </dt>
+          <dd class="short">{{recipe.items}}</dd>
+        </dl>
+    </figcaption>
+</figure> 
+    </td>
+    <td >  
+        <select class="form-control">
+            <option>1</option>
+            <option>2</option>	
+            <option>3</option>	
+            <option>4</option>	
+        </select> 
+    </td>
+    <td > 
+        <div class="price-wrap"> 
+            <var class="price">${{recipe.Price}}</var> 
+
+        </div> <!-- price-wrap .// -->
+    </td>
+    <td class="text-right"> 
+    <a href="" (click)="removeCartProduct(recipe)" class="btn btn-outline-danger"> × Remove</a>
+    </td>
+</tr>
+
+</tbody>
+</table>
+</div> <!-- card.// -->
+<div class="total">
+   <span class="totalLabel">Total:</span>
+   <span class="totalvalue">${{ recipeService.totalValue }}</span>
+</div>
+<div class="Checkout">
+    <a href="/checkout"  class="btn btn-primary">Checkout</a>
+    <a href="/checkout-guest" class="btn btn-success">Checkout As A Guest</a>
+</div>
+</div> 
+
+
+
+<!--container end.//-->
+
 
 </router-outlet>

@@ -1,0 +1,34 @@
+<router-outlet>
+
+
+    <form class="login-form" #RegisterForm=ngForm (ngSubmit)="onSubmit()" >
+            <div class="logo">
+              <img src="../assets/logo.jpg" class="logoimg">
+          </div>
+
+          <div class="form-group">
+                <label >Name</label>
+                <input type="name" class="form-control" id="name" name="name"   placeholder="Enter Name" required>
+                </div>
+
+              <div class="form-group">
+                <label >Email address</label>
+                <input type="email" class="form-control" id="email" name="email"  placeholder="Enter Email" required>
+                </div>
+            
+                  <div class="form-group">
+                        <label >Address</label>
+                        <input type="name" class="form-control" id="Address" name="address" placeholder="Enter Address" required>
+                        </div>
+              
+                  <div class="form-group">
+                    <Label class="totalLabel">Total</Label>
+                    <span class="totalvalue" >${{ recipeService.totalValue }}</span>
+                  </div>
+              <button type="submit" class="btn btn-primary" [disabled]="!RegisterForm.valid" >Order</button>
+             
+            </form>
+
+
+</router-outlet>
+

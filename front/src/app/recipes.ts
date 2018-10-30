@@ -5,5 +5,5 @@ export class Recipes {
     name: string;
     description: string;
     imagePath: string;
-    price: number;
+    Price: number;
 }
