@@ -9,7 +9,7 @@ export class RecipesService {
   navbarCartCount = this.getLocalCartRecipes().length;
   public recipes = [];
   public success = null;
-  public totalValue = 0;
+  public totalValue = 0 ;
   private apiURL = 'http://localhost:8000/api/recipes';
   constructor(private http: HttpClient) { }
 
@@ -27,8 +27,7 @@ export class RecipesService {
   addToCart(data: Recipes) {
 
     let a: Recipes[];
-
-    a = JSON.parse(localStorage.getItem('avct_item')) || [];
+    a = JSON.parse(localStorage.getItem('avct_item'));
     a.push(data);
     localStorage.setItem('avct_item', JSON.stringify(a));
     this.success = 'done';

@@ -41,16 +41,22 @@
             </thead>
 <tbody>
 @foreach ($orders as $row)
+
 <tr>
 <td>{{ $row['id'] }}</td>
 <td >{{ $row['name'] }}</td>
 <td>
+
 @foreach ($row->cart as $item)
 <li class="list-group-item">
-{{ $item }} 
-<span class="badge">{{ $item['Price'] }}$</span>
+{{ $item['name'] }} 
+<span class="badge">{{ $item['price'] }}</span>
 </li>
+
 @endforeach
+
+
+
 </td>
 <td>{{ $row['address'] }}</td>
 <td>{{ $row['time'] }}</td>

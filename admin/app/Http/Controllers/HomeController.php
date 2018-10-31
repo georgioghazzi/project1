@@ -37,9 +37,24 @@ class HomeController extends Controller
         return $recipes;
     }
     public function addOrder(Request $request){
+        $items=[];
        $data = $request->only('name','email','total','address','time');  
-       $cart = json_decode($request->only('cart'));  
-       dd($cart);
+        $cart=$request->only('cart');
+        foreach ($cart as $item){
+                foreach ($item as $i){
+                   $items[]=array("name"=>$i['name'],"price"=>$i['Price']);
+                }
+        };
+        $items = json_encode($items);
+     $order= new Orders();
+     $order->cart = ($items);
+     $order->address = $request->address;
+     $order->email = $request->email;
+     $order->name = $request->name;
+     $order->time = $request->time;
+     $order->total = $request->total;
+     $order->save(); 
+       
        
     
 

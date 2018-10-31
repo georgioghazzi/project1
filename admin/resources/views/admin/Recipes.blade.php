@@ -46,9 +46,9 @@
 <td >{{ $row['items'] }}</td>
 <td >{{ $row['description'] }}</td>
 <td>{{ $row['Price'] }}$</td>
-<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-success btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" disabled><span class="far fa-eye fa-xs"></span></button></p></td>
+<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-success btn-xs" data-title="Delete" data-toggle="modal" data-target="#view" disabled><span class="far fa-eye fa-xs"></span></button></p></td>
 <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" disabled ><span class="far fa-edit fa-xs"></span></button></p></td>
-<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" disabled><span class="far fa-trash-alt fa-xs"></span></button></p></td>
+<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="far fa-trash-alt fa-xs"></span></button></p></td>
 </tr>
 @endforeach
 <tr>

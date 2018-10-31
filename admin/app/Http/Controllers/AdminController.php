@@ -39,10 +39,12 @@ class AdminController extends Controller
 
         $orders = orders::all();
         $orders->transform(function($order,$key){
-            $order->cart = unserialize($order->cart);
+            $order->cart = json_decode($order->cart , true);
             return $order;
-            
-        });
+           });
+      
+ 
+      
         
         return view('/admin/orders',['orders' => $orders]);
     }
