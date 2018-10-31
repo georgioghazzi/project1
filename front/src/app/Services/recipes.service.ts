@@ -25,8 +25,8 @@ export class RecipesService {
       });
   }
   addToCart(data: Recipes) {
-
     let a: Recipes[];
+    let qtt: Recipes['qtt'];
     a = JSON.parse(localStorage.getItem('avct_item'));
     a.push(data);
     localStorage.setItem('avct_item', JSON.stringify(a));
@@ -36,7 +36,6 @@ export class RecipesService {
      }
   removeLocalCartProduct(recipe: Recipes) {
     const recipes: Recipes[] = JSON.parse(localStorage.getItem('avct_item'));
-
     for (let i = 0; i < recipes.length; i++) {
       if (recipes[i].id === recipe.id) {
         recipes.splice(i, 1);
