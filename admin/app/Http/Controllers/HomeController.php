@@ -38,16 +38,10 @@ class HomeController extends Controller
     }
     public function addOrder(Request $request){
        $data = $request->only('name','email','total','address','time');  
-       $cart = $request->only('cart');   
-       $order= new Orders();
-       $order->cart = serialize($cart); 
-       $order->address = $request->address;
-       $order->email = $request->email;
-       $order->name = $request->name;
-       $order->time = $request->time;
-       $order->total = $request->total;
-       $order->save();
-       dd($order);
+       $cart = json_decode($request->only('cart'));  
+       dd($cart);
+       
+    
 
     }
     public function getAddtoCart(Request $request , $id)
