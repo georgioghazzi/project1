@@ -42,7 +42,7 @@ class HomeController extends Controller
         $cart=$request->only('cart');
         foreach ($cart as $item){
                 foreach ($item as $i){
-                   $items[]=array("name"=>$i['name'],"price"=>$i['Price']);
+                   $items[]=array("name"=>$i['name'],"price"=>$i['Price'],"qtt"=>$i['qtt']);
                 }
         };
         $items = json_encode($items);

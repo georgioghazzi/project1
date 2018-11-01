@@ -36,12 +36,7 @@
 </figure> 
     </td>
     <td >  
-        <select class="form-control">
-            <option>1</option>
-            <option>2</option>	
-            <option>3</option>	
-            <option>4</option>	
-        </select> 
+        {{recipe.qtt}}
     </td>
     <td > 
         <div class="price-wrap"> 
@@ -68,7 +63,8 @@
 </div>
 </div> 
 <div class="container"  *ngIf=" !recipeService.isEmpty">
-    <h1>Hi</h1>
+                <h1>No Items In Cart :-(</h1>
+                <button type="submit"  class="btn btn-primary" onclick="location.href='/'">Browse Items</button>
 </div>
 
 <!--container end.//-->

@@ -28,11 +28,18 @@ export class CheckoutGuestComponent implements OnInit {
     this.cartRecipes = this.recipeService.getLocalCartRecipes();
      }
   onSubmit() {
+    let err;
     this.Jarvis.order(this.form).subscribe(
       data => console.log(data),
-      error => console.log(error)
+      error => err = error
     );
+    if (!err) {
+      this.recipeService.success = 'Ordered!';
       this.recipeService.cleanLocalStorage();
+    } else {
+      console.log(err);
+    }
+
   }
 
 

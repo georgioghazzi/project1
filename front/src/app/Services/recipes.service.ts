@@ -34,17 +34,17 @@ export class RecipesService {
     for (let i = 0; i < recipes.length; i++) {
       if (recipes[i].id === data.id) {
         found = true;
+        recipes[i].qtt = recipes[i].qtt + 1;
+        this.success = 'Added Quantity!';
+        localStorage.setItem('avct_item', JSON.stringify(recipes));
        break;
       }
         }
-        if (found) {
-            console.log('found');
-        } else {
-
-
+        if (!found) {
+          data.qtt = 1;
           recipes.push(data);
           localStorage.setItem('avct_item', JSON.stringify(recipes));
-          this.success = 'done';
+          this.success = 'Item Added!';
           console.log(this.success);
           this.calculateLocalCartProdCounts();
         }
@@ -70,7 +70,7 @@ export class RecipesService {
         for (let i = 0; i < recipes.length; i++) {
           if (recipes[i].id === recipe.id) {
             recipes.splice(i, 1);
-            this.totalValue -= recipe.Price * 1;
+            this.totalValue = (this.totalValue - recipe.Price) * 1;
             break;
          }
           }
@@ -90,7 +90,6 @@ export class RecipesService {
     const recipes: Recipes[] = JSON.parse(localStorage.getItem('avct_item'));
     if ( recipes  === null  ) {
       const products: Recipes[] = [];
-      console.log('cart empty!');
       this.isEmpty = false;
     } else {
 

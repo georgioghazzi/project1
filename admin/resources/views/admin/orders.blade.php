@@ -49,8 +49,8 @@
 
 @foreach ($row->cart as $item)
 <li class="list-group-item">
-{{ $item['name'] }} 
-<span class="badge">{{ $item['price'] }}</span>
+{{ strtoupper($item['name']) }} &nbsp;&nbsp; | &nbsp;&nbsp;{{ $item['qtt'] }}  Unit(s)
+<span class="badge">Unit Price : {{ $item['price'] }}</span>
 </li>
 
 @endforeach
