@@ -3,7 +3,6 @@ import { JarvisService } from './../../Services/jarvis.service';
 import { Recipes } from './../../recipes';
 import { RecipesService } from './../../Services/recipes.service';
 import { Component, OnInit } from '@angular/core';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-checkout-guest',
@@ -19,11 +18,10 @@ export class CheckoutGuestComponent implements OnInit {
     name: null,
     address: null,
     time: null,
-    total: this.recipeService.totalValue = this.getTotal(),
+    total: this.recipeService.totalValue,
     cart: this.cartRecipes = this.recipeService.getLocalCartRecipes()
   };
   ngOnInit() {
-      this.getTotal();
       this.getCartProduct();
   }
   getCartProduct() {
@@ -34,13 +32,8 @@ export class CheckoutGuestComponent implements OnInit {
       data => console.log(data),
       error => console.log(error)
     );
+      this.recipeService.cleanLocalStorage();
   }
-  getTotal() {
-    const recipes: Recipes[] = JSON.parse(localStorage.getItem('avct_item'));
 
-    recipes.forEach(recipe => {
-      this.recipeService.totalValue += recipe.Price * 1;
-    });
-    return this.recipeService.totalValue;
-}
+
 }

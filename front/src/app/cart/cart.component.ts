@@ -15,7 +15,6 @@ isDis = false;
 
   ngOnInit() {
     this.getCartProduct();
-    this.getTotal();
     if(this.recipeService.totalValue === 0)
     {
       this.isDis = true;
@@ -30,14 +29,7 @@ isDis = false;
   getCartProduct() {
     this.cartRecipes = this.recipeService.getLocalCartRecipes();
      }
-  getTotal() {
-    const recipes: Recipes[] = JSON.parse(localStorage.getItem('avct_item'));
-
-    recipes.forEach(recipe => {
-      this.recipeService.totalValue += recipe.Price * 1;
-    });
  
-  }
   isDisabled() : boolean{
     return this.isDis;
   }

@@ -6,5 +6,4 @@ export class Recipes {
     description: string;
     imagePath: string;
     Price: number;
-    qtt: number = 0;
 }

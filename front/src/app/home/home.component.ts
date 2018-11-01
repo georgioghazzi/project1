@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
   private apiURL = 'http://localhost:8000/api/recipes';
   constructor(private http: HttpClient,
               private recipesService: RecipesService) { }
+
+
   getrecipes() {
     return this.http.get(this.apiURL).subscribe((res: any[]) => {
       this.recipes = res;
