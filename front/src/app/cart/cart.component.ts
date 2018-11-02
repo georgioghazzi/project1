@@ -30,7 +30,16 @@ isDis = false;
     this.cartRecipes = this.recipeService.getLocalCartRecipes();
      }
  
-  isDisabled() : boolean{
+  isDisabled(): boolean{
     return this.isDis;
+  }
+  minusqtt(recipe: Recipes) {
+    this.recipeService.minusqtt(recipe);
+    this.getCartProduct();
+  }
+  addqtt(recipe: Recipes) {
+    this.recipeService.addqtt(recipe);
+    this.getCartProduct();
+
   }
 }

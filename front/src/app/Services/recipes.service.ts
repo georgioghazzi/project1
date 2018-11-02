@@ -35,7 +35,7 @@ export class RecipesService {
       if (recipes[i].id === data.id) {
         found = true;
         recipes[i].qtt = recipes[i].qtt + 1;
-        this.success = 'Added Quantity!';
+          this.success = 'Added Quantity!';
         localStorage.setItem('avct_item', JSON.stringify(recipes));
        break;
       }
@@ -56,9 +56,41 @@ export class RecipesService {
       } else {
       const recipes: Recipes[] = JSON.parse(localStorage.getItem('avct_item'));
       recipes.forEach(recipe => {
-        this.totalValue += recipe.Price * 1;
+        this.totalValue += recipe.qtt *  recipe.Price * 1;
         return this.totalValue;
       });
+    }
+    }
+    returnTotal() {
+      return this.totalValue;
+    }
+    
+    minusqtt(data: Recipes) {
+      let recipes: Recipes[];
+    recipes = JSON.parse(localStorage.getItem('avct_item'));
+    // loop in Recipes to see if the item passed already exits.
+    for (let i = 0; i < recipes.length; i++) {
+      if (recipes[i].id === data.id) {
+        if (recipes[i].qtt === 1) {
+             this.removeLocalCartProduct(recipes[i]);
+            break;
+        }
+        recipes[i].qtt = recipes[i].qtt - 1;
+        localStorage.setItem('avct_item', JSON.stringify(recipes));
+       break;
+      }
+    }
+  }
+   addqtt(data: Recipes) {
+      let recipes: Recipes[];
+    recipes = JSON.parse(localStorage.getItem('avct_item'));
+    // loop in Recipes to see if the item passed already exits.
+    for (let i = 0; i < recipes.length; i++) {
+      if (recipes[i].id === data.id) {
+        recipes[i].qtt = recipes[i].qtt + 1;
+        localStorage.setItem('avct_item', JSON.stringify(recipes));
+       break;
+      }
     }
     }
 
@@ -80,9 +112,9 @@ export class RecipesService {
       }
   }
 
+
   cleanLocalStorage() {
     localStorage.clear();
-    this.router.navigateByUrl('');
     this.navbarCartCount = 0;
 
   }

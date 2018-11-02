@@ -18,7 +18,7 @@ export class CheckoutGuestComponent implements OnInit {
     name: null,
     address: null,
     time: null,
-    total: this.recipeService.totalValue,
+    total: this.recipeService.getTotal(),
     cart: this.cartRecipes = this.recipeService.getLocalCartRecipes()
   };
   ngOnInit() {

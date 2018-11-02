@@ -36,7 +36,9 @@
 </figure> 
     </td>
     <td >  
-        {{recipe.qtt}}
+        <button type="button" class="btn btn-danger qtt" (click)="minusqtt(recipe)">-</button>   
+        &nbsp;{{recipe.qtt}}&nbsp;
+        <button type="button" class="btn btn-success qtt" (click)="addqtt(recipe)">+</button>
     </td>
     <td > 
         <div class="price-wrap"> 
