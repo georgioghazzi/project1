@@ -26,12 +26,15 @@ Route::prefix('admin')->group(function(){
     Route::post('/adduser','AdminController@postaddUser')->name('admin.user.add')->middleware('role:admin');
     Route::get('/addrecipe','AdminController@AddRecipe')->name('admin.addRecipe')->middleware('role:chef,admin');
     Route::post('/addrecipe','AdminController@postAddRecipe')->name('admin.add.Recipe')->middleware('role:chef,admin');
+    //NEED TO POST NOT GET (TO BE FIXED!)
     Route::get('/forbiden','AdminController@forbiden')->name('admin.forbiden');
     Route::get('/deleteRecipe/{id}','AdminController@deleteRecipe')->name('admin.delete.recipe')->middleware('role:admin');
     Route::get('/viewRecipe/{id}','AdminController@viewRecipe')->name('admin.view.recipe')->middleware('role:admin,staff,chef');
     Route::get('/editRecipe/{id}','AdminController@editRecipe')->name('admin.edit.recipe')->middleware('role:admin,chef');
     Route::post('/updateRecipe/{id}','AdminController@updateRecipe')->name('admin.update.recipe')->middleware('role:admin,chef');
-    Route::post('/deleteUser/{id}','AdminController@deleteUser')->name('admin.delete.user')->middleware('role:admin');
+    //NEED TO POST NOT GET (TO BE FIXED!)
+    Route::get('/deleteUser/{id}','AdminController@deleteUser')->name('admin.delete.user')->middleware('role:admin');
+    Route::get('/editUser/{id}','AdminController@editUser')->name('admin.edit.user')->middleware('role:admin');
 });
 
 

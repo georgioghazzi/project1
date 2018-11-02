@@ -8,7 +8,7 @@ use App\Recipes;
 use App\Admin;
 use App\Orders;
 use App\User;
-
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -116,8 +116,23 @@ class AdminController extends Controller
 
     }
     public function deleteUser($id){
-      
+        $loggedInUserID = Auth::id();
+        $user = admin::all()->toArray();
+        if($id == $loggedInUserID)
+        {
+            session()->flash('error', 'You Can\'t Delete The User Logged-IN');
+            return view('/admin/users',compact('user'));
 
+        }
+        else{
+            admin::destroy($id);
+            return view('/admin/users',compact('user'));
+
+        }
+    }
+    public function editUser($id){
+        $user = admin::find($id);
+        return view('/admin/adduser',compact('user'));
     }
 
     //Redirect To Forbiden Page!

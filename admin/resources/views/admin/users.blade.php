@@ -28,7 +28,13 @@
     <div class="alert alert-info">
         {{ session('message') }}
     </div>
-@endif
+    @endif
+    @if (session()->has('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
+
         <div class="table-responsive">
 
                 
@@ -49,7 +55,7 @@
     <td>{{$row['name']}}</td>
     <td>{{ $row['email'] }}</td>
     <td>{{ strtoupper($row['user_type']) }}</td>
-    <td><p  title="Edit"><a class="btn btn-primary btn-xs" href="#"><span class="far fa-edit fa-xs"></span></button></p></td>
+    <td><p  title="Edit"><button class="btn btn-primary btn-xs delete" data-confirm="Are you sure to edit this item?" href="{{ route('admin.edit.user', $row['id']) }}"><span class="far fa-edit fa-xs"></span></button></p></td>
     <td><p  title="Delete"><button class="btn btn-danger btn-xs delete" data-confirm="Are you sure to delete this item?" href="{{ route('admin.delete.user', $row['id'] ) }}" ><span class="far fa-trash-alt fa-xs"></span></button></p></td>
     </tr>
     @endforeach

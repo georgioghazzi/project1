@@ -24,13 +24,13 @@
 
     {{ csrf_field() }}
    <div>
-   <label>Name</label>  <input class="form-control" name="name" type="text" required>
+   <label>Name</label>  <input class="form-control" name="name" type="text" @if(!empty($user) > 0) value={{ $user['name'] }} @endif required>
    </div>
    <div>
-   <label>Email</label><input class="form-control" name="email"  type="email" required>
+   <label>Email</label><input class="form-control" name="email" @if(!empty($user) > 0) value={{ $user['email'] }} @endif  type="email" required>
    </div>
     <div>
-    <label>Password</label> <input class="form-control" id="password" name="password" type="password" required>
+    <label>Password</label> <input class="form-control" id="password"  required>
     </div>
   <div>
     <label>Confirm Password</label> <input class="form-control" id="password_confirmation" name="password_confirmation"  type="password" required> 
