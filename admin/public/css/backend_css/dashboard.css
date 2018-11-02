@@ -13,7 +13,12 @@ body {
 /*
  * Sidebar
  */
-
+.txtarea{
+   height:200px !important;
+ }
+.buttons{
+  margin-top:10px;
+}
 .sidebar {
   position: fixed;
   top: 0;

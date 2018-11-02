@@ -10,7 +10,7 @@ export class JarvisService {
   private orderURL = 'http://localhost:8000/api';
   constructor(private http: HttpClient) { }
 
-
+  // LAZY LAZY LAZY
   register(data) {
     return this.http.post(`${this.baseURL}/register`, data);
   }

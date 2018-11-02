@@ -12,7 +12,8 @@ import { Component, OnInit } from '@angular/core';
 export class CheckoutGuestComponent implements OnInit {
   cartRecipes: Recipes[];
    constructor(private recipeService: RecipesService,
-              private Jarvis: JarvisService) { }
+              private Jarvis: JarvisService,
+              ) { }
   public form = {
     email: null,
     name: null,
@@ -24,16 +25,20 @@ export class CheckoutGuestComponent implements OnInit {
   ngOnInit() {
       this.getCartProduct();
   }
+
+  // Call To The Get Carts From LocalStorage in RecipeService
   getCartProduct() {
     this.cartRecipes = this.recipeService.getLocalCartRecipes();
      }
+
+  // Submit The Data Via API To DB (needs fixing.)
   onSubmit() {
     let err;
     this.Jarvis.order(this.form).subscribe(
-      data => console.log(data),
+      data => data,
       error => err = error
     );
-    if (!err) {
+    if (err === null) {
       this.recipeService.success = 'Ordered!';
       this.recipeService.cleanLocalStorage();
     } else {

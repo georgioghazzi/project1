@@ -27,6 +27,11 @@ Route::prefix('admin')->group(function(){
     Route::get('/addrecipe','AdminController@AddRecipe')->name('admin.addRecipe')->middleware('role:chef,admin');
     Route::post('/addrecipe','AdminController@postAddRecipe')->name('admin.add.Recipe')->middleware('role:chef,admin');
     Route::get('/forbiden','AdminController@forbiden')->name('admin.forbiden');
+    Route::get('/deleteRecipe/{id}','AdminController@deleteRecipe')->name('admin.delete.recipe')->middleware('role:admin');
+    Route::get('/viewRecipe/{id}','AdminController@viewRecipe')->name('admin.view.recipe')->middleware('role:admin,staff,chef');
+    Route::get('/editRecipe/{id}','AdminController@editRecipe')->name('admin.edit.recipe')->middleware('role:admin,chef');
+    Route::post('/updateRecipe/{id}','AdminController@updateRecipe')->name('admin.update.recipe')->middleware('role:admin,chef');
+    Route::post('/deleteUser/{id}','AdminController@deleteUser')->name('admin.delete.user')->middleware('role:admin');
 });
 
 

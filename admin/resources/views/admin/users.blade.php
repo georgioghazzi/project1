@@ -49,8 +49,8 @@
     <td>{{$row['name']}}</td>
     <td>{{ $row['email'] }}</td>
     <td>{{ strtoupper($row['user_type']) }}</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" disabled ><span class="far fa-edit fa-xs"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" disabled><span class="far fa-trash-alt fa-xs"></span></button></p></td>
+    <td><p  title="Edit"><a class="btn btn-primary btn-xs" href="#"><span class="far fa-edit fa-xs"></span></button></p></td>
+    <td><p  title="Delete"><button class="btn btn-danger btn-xs delete" data-confirm="Are you sure to delete this item?" href="{{ route('admin.delete.user', $row['id'] ) }}" ><span class="far fa-trash-alt fa-xs"></span></button></p></td>
     </tr>
     @endforeach
  <tr>
@@ -62,4 +62,19 @@
         
 </div>
 
+<script>
+ var deleteLinks = document.querySelectorAll('.delete');
+
+for (var i = 0; i < deleteLinks.length; i++) {
+    deleteLinks[i].addEventListener('click', function(event) {
+        event.preventDefault();
+
+        var choice = confirm(this.getAttribute('data-confirm'));
+
+        if (choice) {
+            window.location.href = this.getAttribute('href');
+        }
+    });
+}
+ </script>
 @endsection

@@ -13,6 +13,8 @@ class CORS
      * @param  \Closure  $next
      * @return mixed
      */
+
+    //Enable Access Control Allow Origin (First Error ON API)
     public function handle($request, Closure $next)
     {
         header('Access-Control-Allow-Origin : *');

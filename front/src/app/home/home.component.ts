@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private http: HttpClient,
               private recipesService: RecipesService) { }
 
-
+// Get Recipes Through DB via An API
   getrecipes() {
     return this.http.get(this.apiURL).subscribe((res: any[]) => {
       this.recipes = res;
@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 this.getrecipes() ;
   }
+
+// Add Item To Cart Using RecipeService
 AddToCart(recipes) {
   event.preventDefault();
   this.recipesService.addToCart(recipes);

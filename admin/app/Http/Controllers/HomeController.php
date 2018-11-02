@@ -25,20 +25,27 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+     //Get All Recipes (Used In API)
     public function index()
     {
 
         $recipes = recipes::all();
         return $recipes;
     }
+
+    //Search By ID (Used in API)
     public function searchByID($id)
     {
         $recipes = recipes::find($id);
         return $recipes;
     }
+
+    //Add Order Via API
     public function addOrder(Request $request){
         $items=[];
-       $data = $request->only('name','email','total','address','time');  
+       $data = $request->only('name','email','total','address','time','total');  
         $cart=$request->only('cart');
         foreach ($cart as $item){
                 foreach ($item as $i){
@@ -59,6 +66,8 @@ class HomeController extends Controller
     
 
     }
+
+    // Add To Cart (WEB)(Useless)
     public function getAddtoCart(Request $request , $id)
     {
         $recipes = recipes::find($id);
@@ -70,6 +79,8 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
+
+    //Get Cart (WEB)(Useless)
     public function getCart()
     {
         if (!Session::has('cart')){
@@ -81,7 +92,7 @@ class HomeController extends Controller
         return view('front.shopping-cart',['recipes' =>$cart->items,'totalPrice'=>$cart->totalPrice]);
 
     }
-
+    //Checkout (WEB)(Useless)
     public function checkout()
     {
         if(!Session::has('cart')){
@@ -93,6 +104,7 @@ class HomeController extends Controller
         return view('front.checkout',['total'=>$total]);
     }
 
+    //Checkout Guest (WEB)(Useless)
     public function guestCheckout()
     {
         if(!Session::has('cart')){
@@ -103,6 +115,8 @@ class HomeController extends Controller
         $total = $cart->totalPrice;
         return view('front.GuestCheckout',['total'=>$total]);
     }
+    
+    //POST CHECKOUT (WEB)(Uuseless)
     public function postCheckout(Request $request)
     {
         if (!Session::has('cart')) {

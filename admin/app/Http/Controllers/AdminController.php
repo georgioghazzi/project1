@@ -32,6 +32,10 @@ class AdminController extends Controller
     {
         return view('/admin/AdminPanel');
     }
+
+
+
+    // Get All Orders From DB
     public function Orders()
     {
       
@@ -49,30 +53,32 @@ class AdminController extends Controller
         return view('/admin/orders',['orders' => $orders]);
     }
 
+
+    // Get All Recipes From DB
     public function recipes()
     {
 
         $recipes = recipes::all()->toArray();
         return view('/admin/recipes',compact('recipes'));
     }
+
+    //Get All Users From DB
     public function users()
     {
 
         $user = admin::all()->toArray();
         return view('/admin/users',compact('user'));
     }
+
+    //Redirect To Add User Page
     public function addUser()
     {
         return view('/admin/adduser');
     }
 
-
+    //Add A User To DB
     public function postaddUser(Request $request)
     {
-
-
- 
-
         if ($request->role == "Chef")
         {
             $admin = new Admin;
@@ -109,16 +115,55 @@ class AdminController extends Controller
         }
 
     }
+    public function deleteUser($id){
+      
+
+    }
+
+    //Redirect To Forbiden Page!
     public function forbiden()
     {
        return view('/admin/forbiden');
 
     }
 
+    //Redirect To Add Recipe Page.
     public function addRecipe()
     {
         return view('/admin/addRecipe');
     }
+    public function deleteRecipe($id)
+    {
+        recipes::destroy($id);
+        $recipes = recipes::all()->toArray();
+        return view('/admin/recipes',compact('recipes'));
+
+
+    }
+    public function viewRecipe($id)
+    {
+        $recipes = recipes::find($id);
+        return view('/admin/addrecipe',compact('recipes'));
+    }
+    public function editRecipe($id)
+    {
+        $rec = recipes::find($id);
+        return view('/admin/addrecipe',compact('rec'));
+    }
+    
+    public function updateRecipe($id , request $request){
+        $recipes = recipes::find($id);
+        $recipes->name=$request->RecipeName;
+        $recipes->items=$request->Items;
+        $recipes->description=$request->Description;
+        $recipes->price = $request->Price;
+        $recipes->imagePath=$request->imagePath;
+        $recipes->save();
+        session()->flash('message', 'Recipe Updated!');
+        return redirect()->route('admin.recipes');
+    }
+
+    //Add A Recipe To DB
     public function postaddRecipe(Request $request)
     {
         $recipes = new recipes;

@@ -36,7 +36,6 @@
              <th>Delivery Time</th>
              <th>Total</th>
              <th>View</th>
-              <th>Edit</th>
                <th>Delete</th>
             </thead>
 <tbody>
@@ -62,9 +61,8 @@
 <td>{{ $row['time'] }}</td>
 <td>{{ $row['total'] }}$</td>
 
-<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-success btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="far fa-eye fa-xs"></span></button></p></td>
-<td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="far fa-edit fa-xs"></span></button></p></td>
-<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="far fa-trash-alt fa-xs"></span></button></p></td>
+<td><p  title="View"><a class="btn btn-success btn-xs" ><span class="far fa-eye fa-xs"></span></button></p></td>
+<td><p  title="Delete"><button class="btn btn-danger btn-xs delete" data-confirm="Are you sure to delete this item?" ><span class="far fa-trash-alt fa-xs"></span></button></p></td>
 </tr>
 @endforeach
 <tr>
@@ -74,5 +72,20 @@
  </table>
 
 
+<script>
+ var deleteLinks = document.querySelectorAll('.delete');
+
+for (var i = 0; i < deleteLinks.length; i++) {
+    deleteLinks[i].addEventListener('click', function(event) {
+        event.preventDefault();
+
+        var choice = confirm(this.getAttribute('data-confirm'));
+
+        if (choice) {
+            window.location.href = this.getAttribute('href');
+        }
+    });
+}
+ </script>
 
 @endsection

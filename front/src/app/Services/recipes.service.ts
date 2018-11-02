@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Recipes } from '../recipes';
+import { formatNumber } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -10,22 +11,31 @@ export class RecipesService {
   navbarCartCount = 0;
   public recipes = [];
   public success = null;
-  public totalValue = 0;
+  public totalValue: number| 2 = this.getTotal();
   public isEmpty: boolean;
   private apiURL = 'http://localhost:8000/api/recipes';
   constructor(private http: HttpClient, private router: Router) { }
 
+
+
+  // Get All Recipes
   getRecipes() {
     return this.http.get(this.apiURL).subscribe((res: any[]) => {
       this.recipes = res;
       });
   }
+
+
+  // Post Find a cart item(Never Used?)
   find(id: number) {
     return this.http.get(this.apiURL + '/' + id).subscribe((res: any[]) => {
       this.recipes = res;
       console.log(res);
       });
   }
+
+
+  // Add An Item To Cart
   addToCart(data: Recipes) {
     let found = false;
     let recipes: Recipes[];
@@ -49,22 +59,26 @@ export class RecipesService {
           this.calculateLocalCartProdCounts();
         }
      }
+
+
+     // Get Total Of All Items In Cart
      getTotal() {
-      if (localStorage.getItem('avct_item') ['']) {
+       let total: number = 0;
+       console.log(JSON.parse(localStorage.getItem('avct_item')));
+      if (JSON.parse(localStorage.getItem('avct_item')) === null || localStorage.getItem('avct_item')  [''] ) {
         console.log('cart empty!');
         return 0;
-      } else {
+      } else  {
       const recipes: Recipes[] = JSON.parse(localStorage.getItem('avct_item'));
       recipes.forEach(recipe => {
-        this.totalValue += recipe.qtt *  recipe.Price * 1;
-        return this.totalValue;
+        total += recipe.qtt *  recipe.Price * 1;
+        this.totalValue = total;
       });
     }
-    }
-    returnTotal() {
-      return this.totalValue;
-    }
     
+    return total;
+    }
+    // Minus The Quantity in Cart
     minusqtt(data: Recipes) {
       let recipes: Recipes[];
     recipes = JSON.parse(localStorage.getItem('avct_item'));
@@ -77,10 +91,13 @@ export class RecipesService {
         }
         recipes[i].qtt = recipes[i].qtt - 1;
         localStorage.setItem('avct_item', JSON.stringify(recipes));
+        this.totalValue = this.getTotal();
        break;
       }
     }
   }
+
+  // Add Quantity in Cart
    addqtt(data: Recipes) {
       let recipes: Recipes[];
     recipes = JSON.parse(localStorage.getItem('avct_item'));
@@ -89,11 +106,13 @@ export class RecipesService {
       if (recipes[i].id === data.id) {
         recipes[i].qtt = recipes[i].qtt + 1;
         localStorage.setItem('avct_item', JSON.stringify(recipes));
+        this.totalValue = this.getTotal();
        break;
       }
     }
     }
 
+  // Remove A Product From LocalStorage
   removeLocalCartProduct(recipe: Recipes) {
     const recipes: Recipes[] = JSON.parse(localStorage.getItem('avct_item'));
       if (recipes.length < 2) {
@@ -112,12 +131,14 @@ export class RecipesService {
       }
   }
 
-
+  // Cleans LocalStorage
   cleanLocalStorage() {
     localStorage.clear();
     this.navbarCartCount = 0;
 
   }
+
+  // Get Cart Recipes From LocalStorage
   getLocalCartRecipes(): Recipes[] {
     const recipes: Recipes[] = JSON.parse(localStorage.getItem('avct_item'));
     if ( recipes  === null  ) {
@@ -126,13 +147,20 @@ export class RecipesService {
     } else {
 
       const products: Recipes[] = JSON.parse(localStorage.getItem('avct_item')) || [];
-      this.getTotal();
       this.isEmpty = true;
     return products;
     }
   }
+
+
+  // Set Shopping Cart Items Badge
   calculateLocalCartProdCounts() {
-    this.navbarCartCount = this.getLocalCartRecipes().length;
+    if (JSON.parse(localStorage.getItem('avct_item')) === null) {
+        this.navbarCartCount = 0;
+    } else {
+      this.navbarCartCount = this.getLocalCartRecipes().length;
+    }
+
   }
 
 }
