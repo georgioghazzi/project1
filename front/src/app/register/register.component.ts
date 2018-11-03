@@ -45,6 +45,7 @@ public error: {} ;
     this.error = error.error;
       }
    ngOnInit() {
+     
   }
 
 }

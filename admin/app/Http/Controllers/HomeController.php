@@ -45,7 +45,7 @@ class HomeController extends Controller
     //Add Order Via API
     public function addOrder(Request $request){
         $items=[];
-       $data = $request->only('name','email','total','address','time','total');  
+       $data = $request->only('name','email','total','address','time','total','date_ordered');  
         $cart=$request->only('cart');
         foreach ($cart as $item){
                 foreach ($item as $i){
@@ -59,6 +59,7 @@ class HomeController extends Controller
      $order->email = $request->email;
      $order->name = $request->name;
      $order->time = $request->time;
+     $order->date_ordered = $request->date_ordered;
      $order->total = $request->total;
      $order->save(); 
        

@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->text('cart');
             $table->text('address');
             $table->string('time');
+            $table->text('date_ordered');
             $table->integer('total');
             $table->timestamps();
         });

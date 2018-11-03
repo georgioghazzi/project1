@@ -3,6 +3,8 @@ import { JarvisService } from './../../Services/jarvis.service';
 import { Recipes } from './../../recipes';
 import { RecipesService } from './../../Services/recipes.service';
 import { Component, OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-checkout-guest',
@@ -11,14 +13,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutGuestComponent implements OnInit {
   cartRecipes: Recipes[];
+  public error = null;
    constructor(private recipeService: RecipesService,
-              private Jarvis: JarvisService,
+              private Jarvis: JarvisService, private router: Router
               ) { }
   public form = {
     email: null,
     name: null,
     address: null,
     time: null,
+    date_ordered : formatDate(new Date(), 'dd/MM/yyyy', 'en'),
     total: this.recipeService.getTotal(),
     cart: this.cartRecipes = this.recipeService.getLocalCartRecipes()
   };
@@ -33,19 +37,22 @@ export class CheckoutGuestComponent implements OnInit {
 
   // Submit The Data Via API To DB (needs fixing.)
   onSubmit() {
-    let err;
     this.Jarvis.order(this.form).subscribe(
-      data => data,
-      error => err = error
-    );
-    if (err === null) {
-      this.recipeService.success = 'Ordered!';
-      this.recipeService.cleanLocalStorage();
-    } else {
-      console.log(err);
-    }
+      data => this.handleResponse(data),
+      error => this.handleError(error)
+          );
 
   }
 
+  handleResponse(data) {
+    this.recipeService.success = 'Ordered!';
+    this.recipeService.cleanLocalStorage();
+    this.router.navigateByUrl('/');
+
+  }
+
+  handleError(error) {
+    this.error = error.error.error;
+      }
 
 }

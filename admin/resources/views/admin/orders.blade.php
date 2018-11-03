@@ -34,6 +34,7 @@
              <th>Items Bought</th>
              <th>Address</th>
              <th>Delivery Time</th>
+             <th>Date Ordered</th>
              <th>Total</th>
              <th>View</th>
                <th>Delete</th>
@@ -59,7 +60,9 @@
 </td>
 <td>{{ $row['address'] }}</td>
 <td>{{ $row['time'] }}</td>
+<td>{{ $row['date_ordered'] }}</td>
 <td>{{ $row['total'] }}$</td>
+
 
 <td><p  title="View"><a class="btn btn-success btn-xs" ><span class="far fa-eye fa-xs"></span></button></p></td>
 <td><p  title="Delete"><button class="btn btn-danger btn-xs delete" data-confirm="Are you sure to delete this item?" ><span class="far fa-trash-alt fa-xs"></span></button></p></td>
