@@ -40,16 +40,16 @@ console.log(this.isValid());
     }
   }
 
-  payload(token){
+  payload(token) {
     const payload = token.split('.')[1];
    return  this.decode(payload);
 
   }
-  decode(payload){
+  decode(payload) {
   return JSON.parse(atob(payload));
   }
 
-  loggedIn(){
+  loggedIn() {
     return this.isValid();
   }
 }

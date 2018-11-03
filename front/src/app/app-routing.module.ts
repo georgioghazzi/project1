@@ -16,10 +16,10 @@ import {LoginComponent} from './login/login.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent , canActivate : [BeforeLoginService]},
   { path: 'register', component: RegisterComponent , canActivate : [BeforeLoginService]},
-  {path: '' , component: HomeComponent , canActivate : [BeforeLoginService]},
-  {path : 'cart', component: CartComponent , canActivate : [BeforeLoginService]},
+  {path: '' , component: HomeComponent },
+  {path : 'cart', component: CartComponent },
   {path : 'profile' , component : ProfileComponent , canActivate: [AfterLoginService]},
-  {path: 'checkout-guest', component: CheckoutGuestComponent, canActivate: [BeforeLoginService]},
+  {path: 'checkout-guest', component: CheckoutGuestComponent },
   {path: 'checkout', component: CheckoutComponent , canActivate: [AfterLoginService]}
   ];
 @NgModule({

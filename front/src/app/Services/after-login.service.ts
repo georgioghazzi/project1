@@ -1,7 +1,7 @@
 import { RecipesService } from './recipes.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
 
@@ -17,5 +17,6 @@ export class AfterLoginService implements CanActivate{
   }
 
   constructor(private Token: TokenService,
-              private recipes: RecipesService) { }
+              private recipes: RecipesService,
+              private router: Router) { }
 }

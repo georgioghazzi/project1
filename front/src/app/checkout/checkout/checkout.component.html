@@ -1,33 +1,47 @@
 <router-outlet>
 
 
-    <form class="login-form" #RegisterForm=ngForm (ngSubmit)="onSubmit()" >
-            <div class="logo">
-              <img src="../assets/logo.jpg" class="logoimg">
-          </div>
+  <form class="login-form" #OrderForm=ngForm (ngSubmit)="onSubmit()" >
+          <div class="logo">
+            <img src="../assets/logo.jpg" class="logoimg">
+        </div>
+        
+        <div class="form-group">
+              <label >Name</label>
+              <input type="name" class="form-control" id="name" name="name" value={{  }} [(ngModel)]="form.name" placeholder="Enter Name" required>
+              </div>
 
-          <div class="form-group">
-                <label >Name</label>
-                <input type="name" class="form-control" id="name" name="name"   placeholder="Enter Name" required>
-                </div>
-
-              <div class="form-group">
-                <label >Email address</label>
-                <input type="email" class="form-control" id="email" name="email"  placeholder="Enter Email" required>
-                </div>
-            
-                  <div class="form-group">
-                        <label >Address</label>
-                        <input type="name" class="form-control" id="Address" name="address" placeholder="Enter Address" required>
+            <div class="form-group">
+              <label >Email address</label>
+              <input type="email" class="form-control" id="email" name="email"  placeholder="Enter Email" [(ngModel)]="form.email" required>
+              </div>
+          
+                <div class="form-group">
+                      <label >Address</label>
+                      <input type="name" class="form-control" id="Address" name="address"  [(ngModel)]="form.address" placeholder="Enter Address" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="DeliveryTime" >Delivery Time</label>
+                    <select name="time" [(ngModel)]="form.time" class="form-control">
+                   <option [ngValue]="time" value="12am">12 am</option>
+                   <option [ngValue]="time" value="1pm">1 pm</option>
+                   <option [ngValue]="time" value="2pm"> 2 pm</option>
+                   <option [ngValue]="time" value="3pm">3 pm</option>
+                   <option [ngValue]="time" value="4pm">4 pm</option>
+                   <option [ngValue]="time" value="5pm">5 pm</option>
+                   <option [ngValue]="time" value="6pm">6 pm</option>
+                   <option [ngValue]="time" value="7pm">7 pm</option>
+                   <option [ngValue]="time" value="8pm">8 pm</option>
+                   </select>
                         </div>
-              
-                  <div class="form-group">
-                    <Label class="totalLabel">Total</Label>
-                    <span class="totalvalue">${{ recipeService.totalValue }}</span>
-                  </div>
-              <button type="submit" class="btn btn-primary" [disabled]="!RegisterForm.valid" >Order</button>
-             
-            </form>
+                <div class="form-group">
+                  <Label class="totalLabel">Total</Label>
+                  <span class="totalvalue">${{ recipeService.totalValue }}</span>
+                </div>
+                
+            <button type="submit" class="btn btn-primary" [disabled]="!OrderForm.valid" >Order</button>
+           
+          </form>
 
 
 </router-outlet>
