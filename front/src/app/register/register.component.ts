@@ -27,14 +27,11 @@ public error: {} ;
     private Token: TokenService,
     private router: Router) { }
 
-
-    
   onSubmit() {
     this.Jarvis.register(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
     );
-  
   }
   handleResponse(data) {
     this.Token.handle(data.access_token);

@@ -11,8 +11,11 @@ import { Recipes } from '../recipes';
 export class CartComponent implements OnInit {
 cartRecipes: Recipes[];
 isDis = false;
-total : number = 0;
-  constructor(private recipeService: RecipesService) { }
+
+  constructor(private recipeService: RecipesService) {
+
+
+   }
 
   ngOnInit() {
     this.getCartProduct();

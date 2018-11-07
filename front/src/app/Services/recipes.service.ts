@@ -14,7 +14,9 @@ export class RecipesService {
   public totalValue: number| 2 = this.getTotal();
   public isEmpty: boolean;
   private apiURL = 'http://localhost:8000/api/recipes';
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    
+   }
 
 
 
@@ -72,11 +74,10 @@ export class RecipesService {
       const recipes: Recipes[] = JSON.parse(localStorage.getItem('avct_item'));
       recipes.forEach(recipe => {
         total += recipe.qtt *  recipe.Price * 1;
-        this.totalValue = total;
       });
     }
-    
-    return total;
+
+   return Number(total.toFixed(2));
     }
     // Minus The Quantity in Cart
     minusqtt(data: Recipes) {
@@ -121,7 +122,7 @@ export class RecipesService {
         for (let i = 0; i < recipes.length; i++) {
           if (recipes[i].id === recipe.id) {
             recipes.splice(i, 1);
-            this.totalValue = (this.totalValue - recipe.Price) * 1;
+            this.totalValue = Number((this.totalValue - recipe.Price).toFixed(2));
             break;
          }
           }

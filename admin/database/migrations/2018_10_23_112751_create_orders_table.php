@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->text('address');
             $table->string('time');
             $table->text('date_ordered');
-            $table->integer('total');
+            $table->decimal('total' , 12,2);
             $table->timestamps();
         });
     }
