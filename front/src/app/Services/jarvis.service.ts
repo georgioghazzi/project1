@@ -8,7 +8,6 @@ import { post } from 'selenium-webdriver/http';
 export class JarvisService {
 
   private baseURL = 'http://localhost:8000/api';
-  private orderURL = 'http://localhost:8000/api';
   constructor(private http: HttpClient) { }
 
   // LAZY LAZY LAZY
@@ -20,7 +19,7 @@ export class JarvisService {
     return this.http.post(`${this.baseURL}/login`, data);
   }
   order(data) {
-    return this.http.post(`${this.orderURL}/order`, data);
+    return this.http.post(`${this.baseURL}/order`, data);
   }
 
 }

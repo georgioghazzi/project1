@@ -3,19 +3,23 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Recipes } from '../recipes';
 import { formatNumber } from '@angular/common';
+import { userInfo } from 'os';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipesService {
   navbarCartCount = 0;
+  public user = [] = JSON.parse(localStorage.getItem('user')) || 0;
+  public user_name = this.user.name;
+  public user_email = this.user.email;
+  public user_address = this.user.address;
   public recipes = [];
   public success = null;
   public totalValue: number| 2 = this.getTotal();
   public isEmpty: boolean;
   private apiURL = 'http://localhost:8000/api/recipes';
   constructor(private http: HttpClient, private router: Router) {
-    
    }
 
 
@@ -35,7 +39,6 @@ export class RecipesService {
       console.log(res);
       });
   }
-
 
   // Add An Item To Cart
   addToCart(data: Recipes) {
@@ -134,7 +137,7 @@ export class RecipesService {
 
   // Cleans LocalStorage
   cleanLocalStorage() {
-    localStorage.clear();
+    localStorage.removeItem('avct_item');
     this.navbarCartCount = 0;
 
   }

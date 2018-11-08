@@ -17,6 +17,7 @@ export class CheckoutGuestComponent implements OnInit {
    constructor(private recipeService: RecipesService,
               private Jarvis: JarvisService, private router: Router
               ) { }
+              public user = [];
   public form = {
     email: null,
     name: null,

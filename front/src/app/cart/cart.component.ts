@@ -11,7 +11,8 @@ import { Recipes } from '../recipes';
 export class CartComponent implements OnInit {
 cartRecipes: Recipes[];
 isDis = false;
-
+hiddenGuest: boolean = false;
+hiddenUser: boolean = true;
   constructor(private recipeService: RecipesService) {
 
 
@@ -22,6 +23,10 @@ isDis = false;
     if (this.recipeService.totalValue === 0) {
       this.isDis = true;
     }
+     if(this.recipeService.user !== 0) {
+      this.hiddenUser = false;  
+      this.hiddenGuest = true;
+     }
   }
 
   // Call To The Remove Product function in recipService

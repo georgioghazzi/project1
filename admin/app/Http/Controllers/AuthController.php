@@ -33,10 +33,15 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if ($token = $this->guard()->attempt($credentials)) {
+            $user = $this->guard()->User();
             return $this->respondWithToken($token);
         }
 
         return response()->json(['error' => 'Email Or Pass Doesn\'t Exist'], 401);
+    }
+    public function getUser()
+    {
+        hi;
     }
 
 
@@ -91,7 +96,9 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => $this->guard()->factory()->getTTL() * 60,
-            'name' => $this->guard()->user()->name
+            'name' => $this->guard()->user()->name,
+            'email' => $this->guard()->user()->email,
+            'address' => $this->guard()->user()->address
             ]);
     }
 

@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
 import { JarvisService } from './../../Services/jarvis.service';
 
@@ -15,17 +16,16 @@ export class CheckoutComponent implements OnInit {
   error = null;
   constructor(private recipeService: RecipesService,
     private Jarvis: JarvisService , private router: Router) { }
-
     public form = {
-      email: null,
-      name: null,
+      email: this.recipeService.user_email,
+      name: this.recipeService.user_name,
       address: null,
       time: null,
+      date_ordered : formatDate(new Date(), 'dd/MM/yyyy', 'en'),
       total: this.recipeService.getTotal(),
       cart: this.cartRecipes = this.recipeService.getLocalCartRecipes()
     };
   ngOnInit() {
-
     this.getCartProduct();
   }
  // Call To The Get Carts From LocalStorage in RecipeService

@@ -7,24 +7,28 @@ export class TokenService {
 private iss = {
   login : 'http://localhost:8000/api/login',
   register : 'http://localhost:8000/api/register'
-}
+};
 
   constructor() { }
-  handle(token){
+  handle(token) {
+    token = JSON.stringify(token);
 this.set(token);
 console.log(this.isValid());
   }
 
-  set(token){
-    localStorage.setItem('token',token);
+
+
+
+  set(token) {
+    localStorage.setItem('user', token);
   }
 
 
-  get(){
-    return localStorage.getItem('token');
+  get() {
+    return localStorage.getItem('user');
   }
-  remove(){
-    localStorage.removeItem('token');
+  remove() {
+    localStorage.removeItem('user');
   }
 
 
