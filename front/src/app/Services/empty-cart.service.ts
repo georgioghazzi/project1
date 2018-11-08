@@ -13,7 +13,6 @@ export class EmptyCartService implements CanActivate {
   Observable<boolean> | Promise<boolean> {
 
     if (this.recipes.isEmptyCart === true) {
-      console.log(this.recipes.isEmptyCart);
       this.router.navigate(['/cart']);
       return false;
     }  else {

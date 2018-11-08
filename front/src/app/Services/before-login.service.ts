@@ -12,7 +12,6 @@ export class BeforeLoginService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot , state: RouterStateSnapshot) : boolean |
   Observable<boolean> | Promise<boolean> {
-    this.recipes.calculateLocalCartProdCounts();
     return !this.Token.loggedIn();
   }
   constructor(private Token: TokenService,

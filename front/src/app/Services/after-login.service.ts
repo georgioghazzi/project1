@@ -12,7 +12,6 @@ export class AfterLoginService implements CanActivate{
 
   canActivate(route: ActivatedRouteSnapshot , state: RouterStateSnapshot): boolean |
   Observable<boolean> | Promise<boolean> {
-    this.recipes.calculateLocalCartProdCounts();
     this.router.navigate(['/login']);
     return this.Token.loggedIn();
   }

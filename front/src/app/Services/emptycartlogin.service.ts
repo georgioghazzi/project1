@@ -19,7 +19,6 @@ export class EmptycartloginService implements CanActivate {
     return false;
   } else {
       if (this.recipes.isEmptyCart === true) {
-        console.log(this.recipes.isEmptyCart);
         this.router.navigate(['/cart']);
         return false;
       }  else {

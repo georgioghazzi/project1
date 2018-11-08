@@ -7,7 +7,7 @@ import { Recipes } from '../recipes';
   providedIn: 'root'
 })
 export class RecipesService {
-  navbarCartCount = 0;
+  public navbarCartCount = this.calculateLocalCartProdCounts();
   public user = [] = JSON.parse(localStorage.getItem('user')) || 0;
   public user_name = this.user.name;
   public user_email = this.user.email;
@@ -35,7 +35,6 @@ export class RecipesService {
   find(id: number) {
     return this.http.get(this.apiURL + '/' + id).subscribe((res: any[]) => {
       this.recipes = res;
-      console.log(res);
       });
   }
 
@@ -59,8 +58,6 @@ export class RecipesService {
           recipes.push(data);
           localStorage.setItem('avct_item', JSON.stringify(recipes));
           this.success = 'Item Added!';
-          console.log(this.success);
-          this.calculateLocalCartProdCounts();
         }
      }
 
@@ -68,9 +65,7 @@ export class RecipesService {
      // Get Total Of All Items In Cart
      getTotal() {
        let total: number = 0;
-       console.log(JSON.parse(localStorage.getItem('avct_item')));
       if (JSON.parse(localStorage.getItem('avct_item')) === null || localStorage.getItem('avct_item')  [''] ) {
-        console.log('cart empty!');
         return 0;
       } else  {
       const recipes: Recipes[] = JSON.parse(localStorage.getItem('avct_item'));
@@ -130,7 +125,6 @@ export class RecipesService {
           }
       // ReAdding the products after remove
       localStorage.setItem('avct_item', JSON.stringify(recipes));
-      this.calculateLocalCartProdCounts();
       }
   }
 
@@ -167,9 +161,9 @@ export class RecipesService {
   // Set Shopping Cart Items Badge
   calculateLocalCartProdCounts() {
     if (JSON.parse(localStorage.getItem('avct_item')) === null) {
-        this.navbarCartCount = 0;
+        return 0;
     } else {
-      this.navbarCartCount = this.getLocalCartRecipes().length;
+      return this.getLocalCartRecipes().length;
     }
 
   }
