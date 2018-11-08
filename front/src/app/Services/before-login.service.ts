@@ -4,7 +4,6 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angul
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { TokenService } from './token.service';
-import { IfStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,6 @@ export class BeforeLoginService implements CanActivate {
   Observable<boolean> | Promise<boolean> {
     this.recipes.calculateLocalCartProdCounts();
     return !this.Token.loggedIn();
-  
   }
   constructor(private Token: TokenService,
                   private router: Router,

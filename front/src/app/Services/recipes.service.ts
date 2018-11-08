@@ -2,8 +2,6 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Recipes } from '../recipes';
-import { formatNumber } from '@angular/common';
-import { userInfo } from 'os';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +16,7 @@ export class RecipesService {
   public success = null;
   public totalValue: number| 2 = this.getTotal();
   public isEmpty: boolean;
+  public isEmptyCart: boolean = this.getCartCount();
   private apiURL = 'http://localhost:8000/api/recipes';
   constructor(private http: HttpClient, private router: Router) {
    }
@@ -149,12 +148,20 @@ export class RecipesService {
       const products: Recipes[] = [];
       this.isEmpty = false;
     } else {
-
       const products: Recipes[] = JSON.parse(localStorage.getItem('avct_item')) || [];
       this.isEmpty = true;
     return products;
     }
   }
+  getCartCount(): boolean {
+    const cart: Recipes[] = JSON.parse(localStorage.getItem('avct_item'));
+    if ( cart  === null  ) {
+
+      return  true;
+    } else {
+     return  false;
+  }
+}
 
 
   // Set Shopping Cart Items Badge

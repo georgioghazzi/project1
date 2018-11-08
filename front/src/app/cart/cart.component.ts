@@ -24,7 +24,7 @@ hiddenUser: boolean = true;
       this.isDis = true;
     }
      if(this.recipeService.user !== 0) {
-      this.hiddenUser = false;  
+      this.hiddenUser = false;
       this.hiddenGuest = true;
      }
   }
