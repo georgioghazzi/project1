@@ -1,9 +1,9 @@
+import { RecipesService } from './../Services/recipes.service';
 import { AuthService } from './../Services/auth.service';
 import { TokenService } from './../Services/token.service';
 import { JarvisService } from './../Services/jarvis.service';
 
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
   constructor(private Jarvis: JarvisService,
               private Token: TokenService,
               private router: Router,
-              private Auth: AuthService) { }
+              private Auth: AuthService,
+              private recipeservice : RecipesService) { }
 
   onSubmit() {
     this.Jarvis.login(this.form).subscribe(
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
   }
   handleResponse(data) {
     this.Token.handle(data);
+    this.recipeservice.success = 'Welcome Back ' + this.recipeservice.user_name;
     this.Auth.changeAuthStatus(true);
     this.router.navigate(['/']);
 
